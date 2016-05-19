@@ -142,6 +142,10 @@ States.Play = {
 		game.energyEnemy = new EnergyEnemy(window.game, game.player);
 		game.energyEnemy.load();
 
+		//create one egg
+		game.egg = new collectableItems(window.game,400,1100,'eggSprite');
+		game.egg.load();
+
 
 		// Creates and loads an Enemy.
 		//game.enemy = new Enemy(window.game, game.player);

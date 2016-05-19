@@ -6,6 +6,7 @@ function collectableItems(game, x , y , image){
 	this.staringY = y;
 	this.item = null;
 
+
 }
 
 //set position for the items
@@ -48,10 +49,28 @@ collectableItems.prototype.collectItem = function()
  	{
  		this.game.physics.arcade.overlap(this.game.player.sprite, this.item, null,this.collectKey, this);
  	}
- 	else
+ 	else 
  	{
  		this.game.physics.arcade.overlap(this.game.player.sprite, this.item, null,this.collectFirstAid, this);
  	}
+ 	
+
+ 	/* code for replace the one above this, dont know if neccesary yet.
+
+ 	switch (this.itemSprite){
+ 		case 'coin':
+ 			this.game.physics.arcade.overlap(this.game.player.sprite, this.item, null, this.collectCoin, this);
+ 			break;
+ 		case 'key':
+ 			this.game.physics.arcade.overlap(this.game.player.sprite, this.item, null,this.collectKey, this);
+ 			break;
+ 		case 'firstAid':
+ 			this.game.physics.arcade.overlap(this.game.player.sprite, this.item, null,this.collectFirstAid, this);
+ 			break;
+ 		default :
+
+ 	}*/
+
  }
 
  collectableItems.prototype.collectCoin = function()
@@ -79,3 +98,22 @@ collectableItems.prototype.collectItem = function()
  	}	
  	this.item.kill();
  }
+//once you collect the egg it will display on the inventory, work to do
+ collectableItems.prototype.collectEgg = function(){
+ 	alert('Just a test');
+ }
+//use it to perform the action from the items that you collect
+ collectableItems.prototype.itemActionActivated = function(){
+ 	switch (this.itemSprite){
+ 		case 'Egg':
+ 		// Creates and loads an Enemy. Doesn't work
+		game.energyEnemy = new EnergyEnemy(window.game, this.game.player);
+		game.energyEnemy.load();
+		break;
+		default:
+		;
+ 	}
+
+
+ }
+
